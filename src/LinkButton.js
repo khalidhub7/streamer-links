@@ -12,12 +12,20 @@ const icons = {
 };
 
 function LinkButton({ url, text, icon }) {
+  const handleClick = (e) => {
+    if (url === '#') {
+      e.preventDefault(); // Prevent default link behavior
+      alert('mazal madran link'); // Show the alert
+    }
+  };
+
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
       className="link-button"
+      onClick={handleClick} // Add onClick handler
     >
       <i className={`${icons[icon]} icon`}></i>
       <span className="link-text">{text}</span>
