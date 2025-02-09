@@ -15,7 +15,7 @@ function LinkButton({ url, text, icon }) {
   const handleClick = (e) => {
     if (url === '#') {
       e.preventDefault(); // Prevent default link behavior
-      alert('mazal madran link'); // Show the alert
+      alert('⏳ Mazal madrna link 🔗'); // Show the alert
     }
   };
 
