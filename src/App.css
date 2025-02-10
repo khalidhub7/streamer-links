@@ -69,6 +69,28 @@ body {
   letter-spacing: 2px;
 }
 
+.progress-bar {
+  width: 200px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--button-hover-bg);
+  width: 0;
+  animation: progress 3s ease-in-out forwards;
+}
+
+@keyframes progress {
+  to {
+    width: 100%;
+  }
+}
+
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -115,10 +137,11 @@ body {
   background-image: url("https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/a8dd891f3abc6a41cd4fab210a4b229d~c5_1080x1080.jpeg?lk3s=a5d48078&nonce=23832&refresh_token=e5baddc97d7fc22b330cebcee114dbae&x-expires=1739307600&x-signature=T1gZkUTaLfvxmQe0onwOURW5VAQ%3D&shp=a5d48078&shcp=81f88b70");
   background-size: cover;
   background-position: center;
-  border-radius: 30% 70% 44% 56% / 30% 30% 70% 70%;
+  border-radius: 5px; /* Reduced border radius to 5px */
   animation: float 3s ease-in-out infinite, sway 5s ease-in-out infinite, pulse 2s ease-in-out infinite;
   grid-column: 2 / 3;
   justify-self: end;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Added shadow to logo */
 }
 
 .links-container {
@@ -178,14 +201,14 @@ body {
   padding: 20px;
   margin-top: auto;
   font-size: 0.9rem;
-  color: rgba(0, 0, 0, 0.9); /* Darker text for better visibility */
-  opacity: 0.9; /* Slightly more opaque */
+  color: black; /* Force text color to black */
+  opacity: 0.9;
   animation: fadeIn 2s ease-in-out;
 }
 
 .footer p {
   margin: 5px 0;
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); /* Stronger white shadow */
+  text-shadow: none; /* Remove text shadow */
 }
 
 .footer p:first-child {
@@ -196,11 +219,41 @@ body {
 
 .footer p:last-child {
   font-size: 0.8rem;
-  opacity: 0.9; /* Slightly more opaque */
+  opacity: 0.9;
 }
 
-.link-button span {
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); /* White shadow for button text */
+.events {
+  text-align: center; /* Center text in events section */
+}
+
+.event-card {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+  animation: pulse 2s infinite;
+}
+
+.event-card h3 {
+  font-weight: bold;
+  color: black;
+  text-shadow: none;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.event-card p {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  text-shadow: none;
+  letter-spacing: 1px;
+  text-align: center; /* Center the event description text */
+  animation: glow 1.5s ease-in-out infinite;
+}
+
+.event-card .link-button {
+  width: 150px; /* Shorten the width of the button */
+  margin: 0 auto; /* Center the button */
 }
 
 @keyframes float {
@@ -285,6 +338,15 @@ body {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
   }
 }
 

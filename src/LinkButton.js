@@ -14,8 +14,8 @@ const icons = {
 function LinkButton({ url, text, icon }) {
   const handleClick = (e) => {
     if (url === '#') {
-      e.preventDefault(); // Prevent default link behavior
-      alert('⏳ Mazal madrna link 🔗'); // Show the alert
+      e.preventDefault();
+      alert('⏳ Mazal madrna link 🔗');
     }
   };
 
@@ -25,7 +25,7 @@ function LinkButton({ url, text, icon }) {
       target="_blank"
       rel="noopener noreferrer"
       className="link-button"
-      onClick={handleClick} // Add onClick handler
+      onClick={handleClick}
     >
       <i className={`${icons[icon]} icon`}></i>
       <span className="link-text">{text}</span>
