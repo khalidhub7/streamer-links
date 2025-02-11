@@ -15,7 +15,7 @@ function LinkButton({ url, text, icon }) {
   const handleClick = (e) => {
     if (url === '#') {
       e.preventDefault();
-      alert('⏳ Mazal madrna link 🔗');
+      alert('⏳ mazal ma tht lien 🔗');
     }
   };
 
