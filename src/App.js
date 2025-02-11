@@ -87,7 +87,7 @@ function App() {
           text="Follow on TikTok" 
           icon="tiktok" 
         />
-        <LinkButton url="#" text="Join My Discord" icon="discord" />
+        <LinkButton url="https://discord.gg/2esdbjDhuD" text="Join My Discord" icon="discord" />
         <LinkButton url="#" text="Subscribe on YouTube" icon="youtube" />
         <LinkButton url="#" text="Follow on Facebook" icon="facebook" />
       </div>
