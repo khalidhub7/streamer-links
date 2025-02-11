@@ -11,6 +11,16 @@ const icons = {
   tiktok: 'fab fa-tiktok',
 };
 
+const iconColors = {
+  discord: '#7289da', // Discord blue
+  instagram: '#E4405F', // Instagram pink-red
+  twitch: '#9146FF', // Twitch purple
+  youtube: '#FF0000', // YouTube red
+  twitter: '#1DA1F2', // Twitter blue
+  facebook: '#1877F2', // Facebook blue
+  tiktok: '#69C9D0', // TikTok teal
+};
+
 function LinkButton({ url, text, icon }) {
   const handleClick = (e) => {
     if (url === '#') {
@@ -27,7 +37,10 @@ function LinkButton({ url, text, icon }) {
       className="link-button"
       onClick={handleClick}
     >
-      <i className={`${icons[icon]} icon`}></i>
+      <i 
+        className={`${icons[icon]} icon`} 
+        style={{ color: iconColors[icon] }} 
+      ></i>
       <span className="link-text">{text}</span>
     </a>
   );
