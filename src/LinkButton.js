@@ -9,6 +9,8 @@ const icons = {
   twitter: 'fab fa-twitter',
   facebook: 'fab fa-facebook',
   tiktok: 'fab fa-tiktok',
+  kick: 'fas fa-play', // Assuming a simple play icon for Kick live stream
+  whatsapp: 'fab fa-whatsapp', // WhatsApp icon
 };
 
 const iconColors = {
@@ -19,6 +21,8 @@ const iconColors = {
   twitter: '#1DA1F2', // Twitter blue
   facebook: '#1877F2', // Facebook blue
   tiktok: '#69C9D0', // TikTok teal
+  kick: '#00FF00', // Kick green for the live stream
+  whatsapp: '#25D366', // WhatsApp green
 };
 
 function LinkButton({ url, text, icon }) {

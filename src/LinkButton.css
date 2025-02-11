@@ -29,10 +29,17 @@
   margin-right: 8px;
   font-size: 1.2rem;
   transition: transform 0.3s ease, color 0.3s ease;
+  opacity: 0.8; /* Lighter icon color */
 }
 
 .link-button:hover i {
   transform: scale(1.2);
+  opacity: 1; /* Make icon fully opaque on hover */
+}
+
+/* Specific styling for the TikTok button */
+.link-button.tiktok:hover i {
+  color: #FF0000; /* Make TikTok icon red */
 }
 
 @keyframes fadeInUp {

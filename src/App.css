@@ -61,7 +61,7 @@ body {
 
 .loading-text {
   font-size: 1.5rem;
-  opacity: 0.8;
+  opacity: 0.6; /* Lighter color */
   margin-top: 15px;
   animation: fadeInText 1.5s ease-in-out;
   font-weight: 600;
@@ -137,11 +137,11 @@ body {
   background-image: url("https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/a8dd891f3abc6a41cd4fab210a4b229d~c5_1080x1080.jpeg?lk3s=a5d48078&nonce=23832&refresh_token=e5baddc97d7fc22b330cebcee114dbae&x-expires=1739307600&x-signature=T1gZkUTaLfvxmQe0onwOURW5VAQ%3D&shp=a5d48078&shcp=81f88b70");
   background-size: cover;
   background-position: center;
-  border-radius: 5px; /* Reduced border radius to 5px */
+  border-radius: 5px;
   animation: float 3s ease-in-out infinite, sway 5s ease-in-out infinite, pulse 2s ease-in-out infinite;
   grid-column: 2 / 3;
   justify-self: end;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Added shadow to logo */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .links-container {
@@ -201,14 +201,14 @@ body {
   padding: 20px;
   margin-top: auto;
   font-size: 0.9rem;
-  color: black; /* Force text color to black */
+  color: black;
   opacity: 0.9;
   animation: fadeIn 2s ease-in-out;
 }
 
 .footer p {
   margin: 5px 0;
-  text-shadow: none; /* Remove text shadow */
+  text-shadow: none;
 }
 
 .footer p:first-child {
@@ -223,7 +223,7 @@ body {
 }
 
 .events {
-  text-align: center; /* Center text in events section */
+  text-align: center;
 }
 
 .event-card {
@@ -247,40 +247,13 @@ body {
   color: black;
   text-shadow: none;
   letter-spacing: 1px;
-  text-align: center; /* Center the event description text */
+  text-align: center;
   animation: glow 1.5s ease-in-out infinite;
 }
 
 .event-card .link-button {
-  width: 150px; /* Shorten the width of the button */
-  margin: 0 auto; /* Center the button */
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes sway {
-  0%, 100% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+  width: 150px;
+  margin: 0 auto;
 }
 
 @keyframes fadeIn {

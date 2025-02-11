@@ -74,13 +74,19 @@ function App() {
         />
         <LinkButton 
           url="https://kick.com/vinsmoke-ff" 
-          text="Watch Kick Live Stream" icon="kick" />
+          text="Watch Kick Live Stream" 
+          icon="kick" 
+        />
         <LinkButton 
-          url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW" text="Join WhatsApp Group" icon="whatsapp" />
+          url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW" 
+          text="Join WhatsApp Group" 
+          icon="whatsapp" 
+        />
         <LinkButton 
-          url="https://www.tiktok.com/search?q=vinsmoke&t=1739252858280" text="Follow on TikTok" icon="tiktok" />
-
-
+          url="https://www.tiktok.com/search?q=vinsmoke&t=1739252858280" 
+          text="Follow on TikTok" 
+          icon="tiktok" 
+        />
         <LinkButton url="#" text="Join My Discord" icon="discord" />
         <LinkButton url="#" text="Subscribe on YouTube" icon="youtube" />
         <LinkButton url="#" text="Follow on Facebook" icon="facebook" />
