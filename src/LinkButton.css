@@ -1,8 +1,8 @@
 .link-button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  padding: 15px 20px;
   font-size: 1rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -13,9 +13,10 @@
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease;
-  overflow: hidden;
   text-decoration: none;
   animation: fadeInUp 1s ease-in-out;
+  min-width: 200px;
+  margin: 5px;
 }
 
 .link-button:hover {
@@ -28,18 +29,17 @@
 .link-button i {
   margin-right: 8px;
   font-size: 1.2rem;
-  transition: transform 0.3s ease, color 0.3s ease;
-  opacity: 0.8; /* Lighter icon color */
+  transition: transform 0.3s ease;
+  opacity: 0.8;
 }
 
 .link-button:hover i {
   transform: scale(1.2);
-  opacity: 1; /* Make icon fully opaque on hover */
+  opacity: 1;
 }
 
-/* Specific styling for the TikTok button */
 .link-button.tiktok:hover i {
-  color: #FF0000; /* Make TikTok icon red */
+  color: #FF0000;
 }
 
 @keyframes fadeInUp {

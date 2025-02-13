@@ -9,7 +9,7 @@ function App() {
 
   // Simulate loading progress
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 5000); // 5 seconds loading
+    const timer = setTimeout(() => setLoading(false), 4000); // 5 seconds loading
     return () => clearTimeout(timer);
   }, []);
 

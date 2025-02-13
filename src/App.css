@@ -37,9 +37,9 @@ body {
   min-height: 90vh;
   margin: 20px auto;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background: rgba(240, 240, 240, 0.5);
+  border-radius: 0px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -61,12 +61,13 @@ body {
 
 .loading-text {
   font-size: 1.5rem;
-  opacity: 0.6; /* Lighter color */
+  opacity: 0.8;
   margin-top: 15px;
   animation: fadeInText 1.5s ease-in-out;
   font-weight: 600;
-  text-transform: uppercase;
+  text-transform: lowercase;
   letter-spacing: 2px;
+  color: var(--loading-text-color);
 }
 
 .progress-bar {
@@ -85,12 +86,6 @@ body {
   animation: progress 3s ease-in-out forwards;
 }
 
-@keyframes progress {
-  to {
-    width: 100%;
-  }
-}
-
 .header {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -99,7 +94,7 @@ body {
   margin-bottom: 10px;
   background: var(--button-hover-bg);
   padding: 20px;
-  border-radius: 15px;
+  border-radius: 10%;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   animation: slideIn 0.8s ease-in-out;
 }
@@ -124,11 +119,12 @@ body {
 
 .header p {
   font-size: 1rem;
-  color: white;
+  color: whitesmoke;
   opacity: 0.9;
   font-weight: 400;
   letter-spacing: 1px;
   animation: fadeIn 1.5s ease-in-out;
+  font-family: cursive;
 }
 
 .logo {
@@ -137,41 +133,20 @@ body {
   background-image: url("https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/a8dd891f3abc6a41cd4fab210a4b229d~c5_1080x1080.jpeg?lk3s=a5d48078&nonce=23832&refresh_token=e5baddc97d7fc22b330cebcee114dbae&x-expires=1739307600&x-signature=T1gZkUTaLfvxmQe0onwOURW5VAQ%3D&shp=a5d48078&shcp=81f88b70");
   background-size: cover;
   background-position: center;
-  border-radius: 5px;
-  animation: float 3s ease-in-out infinite, sway 5s ease-in-out infinite, pulse 2s ease-in-out infinite;
+  border-radius: 10px;
+  animation: float 3s ease-in-out infinite, sway 5s ease-in-out infinite;
   grid-column: 2 / 3;
   justify-self: end;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
 }
 
 .links-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 15px;
   margin-top: 10px;
   animation: fadeInUp 1s ease-in-out;
-}
-
-.button {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 15px;
-  background: var(--button-bg);
-  color: var(--text-color);
-  border-radius: 10px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 6px var(--button-shadow);
-  animation: fadeInUp 1s ease-in-out;
-}
-
-.button:hover {
-  background: var(--button-hover-bg);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .theme-toggle {
@@ -187,7 +162,7 @@ body {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   transition: all 0.2s ease;
-  animation: bounce 1.5s infinite, spin 5s linear infinite;
+  animation: bounce 1.5s infinite;
 }
 
 .theme-toggle:hover {
@@ -200,21 +175,17 @@ body {
   text-align: center;
   padding: 20px;
   margin-top: auto;
-  font-size: 0.9rem;
+  font-size: 15px;
   color: black;
-  opacity: 0.9;
-  animation: fadeIn 2s ease-in-out;
 }
 
 .footer p {
   margin: 5px 0;
-  text-shadow: none;
 }
 
 .footer p:first-child {
   font-size: 1rem;
   font-weight: 600;
-  opacity: 1;
 }
 
 .footer p:last-child {
@@ -231,96 +202,58 @@ body {
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
-  animation: pulse 2s infinite;
+  animation: pulse 5s infinite;
 }
 
 .event-card h3 {
   font-weight: bold;
   color: black;
-  text-shadow: none;
-  animation: fadeIn 1s ease-in-out;
 }
 
 .event-card p {
   font-size: 1rem;
   font-weight: bold;
   color: black;
-  text-shadow: none;
   letter-spacing: 1px;
-  text-align: center;
-  animation: glow 1.5s ease-in-out infinite;
 }
 
-.event-card .link-button {
-  width: 150px;
-  margin: 0 auto;
+@keyframes progress {
+  to { width: 100%; }
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideIn {
-  from {
-    transform: translateX(-50px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
 }
 
 @keyframes textGlow {
-  0% {
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-  }
-  100% {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
-  }
+  0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+  100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.9); }
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-3px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
 }
 
-@keyframes glow {
-  0%, 100% {
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-  }
-  50% {
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
-  }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 @media (max-width: 768px) {
@@ -346,14 +279,8 @@ body {
   }
 
   .links-container {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 10px;
-  }
-}
-
-@media (min-width: 769px) {
-  .links-container {
-    margin-top: 10px;
-    margin-bottom: 20px;
   }
 }
