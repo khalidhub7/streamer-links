@@ -1,10 +1,8 @@
-/* --- App.css --- */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
 :root {
   --bg-color: #f0f0f0;
   --text-color: #333;
-  --button-bg: rgba(0, 0, 0, 0.1);
   --button-hover-bg: linear-gradient(135deg, #7289da, #e4405f);
   --accent-color: rgba(128, 128, 128, 0.2);
   --container-bg: rgba(240, 240, 240, 0.5);
@@ -26,9 +24,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: var(--bg-color) url('./img/wallpaperflare.com_wallpaper.jpg') no-repeat center center fixed;
-  background-size: cover;
-  color: var(--text-color);
+  background: inherit;
   text-align: center;
   padding: 20px;
   animation: fadeIn 1s ease-in-out;
@@ -41,7 +37,6 @@ body {
   width: 60px;
   height: 60px;
   animation: spin 2s linear infinite;
-  backface-visibility: hidden;
 }
 
 .loading-text {
@@ -78,7 +73,6 @@ body {
   margin: 20px auto;
   padding: 20px;
   background: var(--container-bg);
-  border-radius: 0px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.9);
   display: flex;
   flex-direction: column;
@@ -87,14 +81,13 @@ body {
 
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   background: var(--button-hover-bg);
   padding: 25px;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  animation: slideIn 0.8s ease-in-out;
-  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -118,18 +111,15 @@ body {
 .header p {
   font-size: 1rem;
   color: whitesmoke;
-  opacity: 0.9;
-  font-weight: 400;
   font-family: cursive;
   margin: 5px 0;
+  opacity: 0.9;
 }
 
 .logo {
-  width: 200px;
-  height: 200px;
-  background-image: url("./img/logoo.jpeg");
-  background-size: cover;
-  background-position: center;
+  width: 180px;
+  height: 180px;
+  background: url("./img/logoo.jpeg") center/cover no-repeat;
   border-radius: 10px;
   animation: breathe 3s ease-in-out infinite;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
@@ -154,7 +144,8 @@ body {
 
 .events p {
   font-style: italic;
-  opacity: 0.8;
+  font-size: 1.3rem;
+  opacity: 0.9;
   margin: 10px 0;
 }
 
@@ -170,14 +161,9 @@ body {
   align-items: flex-end;
 }
 
-.no-shadow {
-  text-shadow: none;
-}
-
 @keyframes progress { to { width: 100%; } }
 @keyframes fadeIn { to { opacity: 1; } }
 @keyframes fadeInText { to { opacity: 0.8; } }
-@keyframes slideIn { to { transform: translateX(0); opacity: 1; } }
 @keyframes textGlow {
   0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
   100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.9); }
@@ -191,8 +177,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
   }
 }

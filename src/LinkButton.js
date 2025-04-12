@@ -1,4 +1,3 @@
-// LinkButton.js
 import React, { useEffect, useRef } from 'react';
 import './LinkButton.css';
 import hoverSound from './img/hover-sound.wav';
@@ -48,9 +47,7 @@ function LinkButton({ url, text, icon }) {
   const handleHover = () => {
     if (audioRef.current) {
       audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(error => {
-        console.log('Audio play failed:', error);
-      });
+      audioRef.current.play().catch(() => {});
     }
   };
 
@@ -63,10 +60,7 @@ function LinkButton({ url, text, icon }) {
       onClick={handleClick}
       onMouseEnter={handleHover}
     >
-      <i 
-        className={`${icons[icon]} icon`} 
-        style={{ color: iconColors[icon] }}
-      ></i>
+      <i className={`${icons[icon]} icon`} style={{ color: iconColors[icon] }}></i>
       <span className="link-text">{text}</span>
     </a>
   );
