@@ -1,53 +1,53 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './LinkButton.css';
 import hoverSound from './img/hover-sound.wav';
 
 const icons = {
   discord: 'fab fa-discord',
   instagram: 'fab fa-instagram',
-  youtube: 'fab fa-youtube',
-  facebook: 'fab fa-facebook',
-  tiktok: 'fab fa-tiktok',
-  kick: 'fas fa-play',
   whatsapp: 'fab fa-whatsapp',
+  tiktok: 'fab fa-tiktok',
+  kick: 'fas fa-play'
 };
 
 const iconColors = {
   discord: '#7289da',
   instagram: '#E4405F',
-  youtube: '#FF0000',
-  facebook: '#1877F2',
-  tiktok: '#69C9D0',
-  kick: '#00FF00',
   whatsapp: '#25D366',
+  tiktok: '#69C9D0',
+  kick: '#00FF00'
 };
 
-function LinkButton({ url, text, icon }) {
+function LinkButton({ url, text, icon, iconSrc, onClick }) {
   const audioRef = useRef(null);
+  const [audioReady, setAudioReady] = useState(false);
 
   useEffect(() => {
-    audioRef.current = new Audio(hoverSound);
-    const enableAudio = () => {
-      audioRef.current.play().then(() => {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-        document.removeEventListener('click', enableAudio);
+    const audio = new Audio(hoverSound);
+    audioRef.current = audio;
+
+    const unlockAudio = () => {
+      audio.play().then(() => {
+        audio.pause();
+        audio.currentTime = 0;
+        setAudioReady(true);
+        document.removeEventListener('click', unlockAudio);
       }).catch(() => {});
     };
-    document.addEventListener('click', enableAudio);
+
+    document.addEventListener('click', unlockAudio);
   }, []);
 
   const handleClick = (e) => {
     if (url === '#') {
       e.preventDefault();
-      alert('⏳ mazal ma tht lien 🔗');
+      if (onClick) onClick();
     }
   };
 
   const handleHover = () => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().catch(() => {});
+    if (audioReady) {
+      audioRef.current?.play().catch(() => {});
     }
   };
 
@@ -56,11 +56,16 @@ function LinkButton({ url, text, icon }) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`link-button ${icon}`}
+      className="link-button"
       onClick={handleClick}
       onMouseEnter={handleHover}
+      dir={text.startsWith('أ') ? 'rtl' : 'ltr'}
     >
-      <i className={`${icons[icon]} icon`} style={{ color: iconColors[icon] }}></i>
+      {iconSrc ? (
+        <img src={iconSrc} alt="" className="custom-icon" />
+      ) : (
+        <i className={`${icons[icon]} icon`} style={{ color: iconColors[icon] }}></i>
+      )}
       <span className="link-text">{text}</span>
     </a>
   );
