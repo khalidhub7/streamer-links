@@ -1,28 +1,25 @@
 import React from 'react';
 import './LinkButton.css';
+import hoverSound from './img/hover-sound.wav';
 
 const icons = {
   discord: 'fab fa-discord',
   instagram: 'fab fa-instagram',
-  twitch: 'fab fa-twitch',
   youtube: 'fab fa-youtube',
-  twitter: 'fab fa-twitter',
   facebook: 'fab fa-facebook',
   tiktok: 'fab fa-tiktok',
-  kick: 'fas fa-play', // Assuming a simple play icon for Kick live stream
-  whatsapp: 'fab fa-whatsapp', // WhatsApp icon
+  kick: 'fas fa-play',
+  whatsapp: 'fab fa-whatsapp',
 };
 
 const iconColors = {
-  discord: '#7289da', // Discord blue
-  instagram: '#E4405F', // Instagram pink-red
-  twitch: '#9146FF', // Twitch purple
-  youtube: '#FF0000', // YouTube red
-  twitter: '#1DA1F2', // Twitter blue
-  facebook: '#1877F2', // Facebook blue
-  tiktok: '#69C9D0', // TikTok teal
-  kick: '#00FF00', // Kick green for the live stream
-  whatsapp: '#25D366', // WhatsApp green
+  discord: '#7289da',
+  instagram: '#E4405F',
+  youtube: '#FF0000',
+  facebook: '#1877F2',
+  tiktok: '#69C9D0',
+  kick: '#00FF00',
+  whatsapp: '#25D366',
 };
 
 function LinkButton({ url, text, icon }) {
@@ -33,6 +30,14 @@ function LinkButton({ url, text, icon }) {
     }
   };
 
+  const handleHover = () => {
+    const audio = new Audio(hoverSound);
+    audio.currentTime = 0;
+    audio.play().catch(error => {
+      console.log('Audio play failed:', error);
+    });
+  };
+
   return (
     <a
       href={url}
@@ -40,6 +45,7 @@ function LinkButton({ url, text, icon }) {
       rel="noopener noreferrer"
       className="link-button"
       onClick={handleClick}
+      onMouseEnter={handleHover}
     >
       <i 
         className={`${icons[icon]} icon`} 

@@ -4,26 +4,26 @@
   justify-content: center;
   padding: 15px 20px;
   font-size: 1rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  text-align: center;
+  font-weight: bolder;
+  text-transform: lowercase;
+  letter-spacing: 2px;
   background-color: var(--accent-color);
   color: black;
-  border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  border-radius: 10%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.9);
   transition: all 0.3s ease;
   text-decoration: none;
   animation: fadeInUp 1s ease-in-out;
   min-width: 200px;
   margin: 5px;
+  border: solid 1px grey;
 }
 
 .link-button:hover {
   background: var(--button-hover-bg);
   color: white;
   transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9);
 }
 
 .link-button i {
@@ -40,15 +40,4 @@
 
 .link-button.tiktok:hover i {
   color: #FF0000;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
