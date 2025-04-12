@@ -38,15 +38,28 @@
   opacity: 1;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .link-button {
-    min-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 14px 16px;
+    font-size: 1rem;
+  }
+
+  .link-button i {
+    font-size: 1.1rem;
+    margin-right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .link-button {
+    padding: 12px 14px;
     font-size: 0.95rem;
-    padding: 10px 14px;
   }
 
   .link-button i {
     font-size: 1rem;
-    margin-right: 6px;
+    margin-right: 8px;
   }
 }
