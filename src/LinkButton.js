@@ -1,4 +1,5 @@
-import React from 'react';
+// LinkButton.js
+import React, { useEffect, useRef } from 'react';
 import './LinkButton.css';
 import hoverSound from './img/hover-sound.wav';
 
@@ -23,6 +24,20 @@ const iconColors = {
 };
 
 function LinkButton({ url, text, icon }) {
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    audioRef.current = new Audio(hoverSound);
+    const enableAudio = () => {
+      audioRef.current.play().then(() => {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+        document.removeEventListener('click', enableAudio);
+      }).catch(() => {});
+    };
+    document.addEventListener('click', enableAudio);
+  }, []);
+
   const handleClick = (e) => {
     if (url === '#') {
       e.preventDefault();
@@ -31,11 +46,12 @@ function LinkButton({ url, text, icon }) {
   };
 
   const handleHover = () => {
-    const audio = new Audio(hoverSound);
-    audio.currentTime = 0;
-    audio.play().catch(error => {
-      console.log('Audio play failed:', error);
-    });
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().catch(error => {
+        console.log('Audio play failed:', error);
+      });
+    }
   };
 
   return (
@@ -43,13 +59,13 @@ function LinkButton({ url, text, icon }) {
       href={url}
       target="_blank"
       rel="noopener noreferrer"
-      className="link-button"
+      className={`link-button ${icon}`}
       onClick={handleClick}
       onMouseEnter={handleHover}
     >
       <i 
         className={`${icons[icon]} icon`} 
-        style={{ color: iconColors[icon] }} 
+        style={{ color: iconColors[icon] }}
       ></i>
       <span className="link-text">{text}</span>
     </a>

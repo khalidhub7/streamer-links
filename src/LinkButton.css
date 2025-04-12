@@ -1,35 +1,37 @@
+/* LinkButton.css */
 .link-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 20px;
+  padding: 12px 18px;
   font-size: 1rem;
-  font-weight: bolder;
+  font-weight: bold;
   text-transform: lowercase;
   letter-spacing: 2px;
   background-color: var(--accent-color);
   color: black;
-  border-radius: 10%;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
   transition: all 0.3s ease;
   text-decoration: none;
   animation: fadeInUp 1s ease-in-out;
-  min-width: 200px;
-  margin: 5px;
-  border: solid 1px grey;
+  min-width: 180px;
+  margin: 6px;
+  border: 1px solid grey;
+  flex-wrap: nowrap;
 }
 
 .link-button:hover {
   background: var(--button-hover-bg);
   color: white;
   transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.85);
 }
 
 .link-button i {
-  margin-right: 8px;
+  margin-right: 10px;
   font-size: 1.2rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   opacity: 0.8;
 }
 
@@ -40,4 +42,21 @@
 
 .link-button.tiktok:hover i {
   color: #FF0000;
+}
+
+@media (max-width: 600px) {
+  .link-button {
+    min-width: 100%;
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+
+  .link-button i {
+    font-size: 1rem;
+    margin-right: 6px;
+  }
+
+  .link-text {
+    font-size: 0.9rem;
+  }
 }
