@@ -4,10 +4,25 @@ import LinkButton from './LinkButton';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [audioAllowed, setAudioAllowed] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 3000);
-    return () => clearTimeout(timer);
+    
+    const handleFirstInteraction = () => {
+      setAudioAllowed(true);
+      document.removeEventListener('click', handleFirstInteraction);
+      document.removeEventListener('touchstart', handleFirstInteraction);
+    };
+
+    document.addEventListener('click', handleFirstInteraction);
+    document.addEventListener('touchstart', handleFirstInteraction);
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener('click', handleFirstInteraction);
+      document.removeEventListener('touchstart', handleFirstInteraction);
+    };
   }, []);
 
   if (loading) {
@@ -42,25 +57,44 @@ function App() {
           url="https://www.instagram.com/vins.moke921?igsh=MXVsc2R2bXAyMmhxeg%3D%3D&utm_source=qr" 
           text="Follow on Instagram" 
           icon="instagram" 
+          audioAllowed={audioAllowed}
         />
         <LinkButton 
           url="https://kick.com/vinsmoke-ff" 
           text="Watch Kick Live Stream" 
           icon="kick" 
+          audioAllowed={audioAllowed}
         />
         <LinkButton 
           url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW" 
           text="Join WhatsApp Group" 
           icon="whatsapp" 
+          audioAllowed={audioAllowed}
         />
         <LinkButton 
           url="https://www.tiktok.com/search?q=vinsmoke&t=1739252858280" 
           text="Follow on TikTok" 
           icon="tiktok" 
+          audioAllowed={audioAllowed}
         />
-        <LinkButton url="https://discord.gg/vru4k95Swa" text="Join My Discord" icon="discord" />
-        <LinkButton url="#" text="Subscribe on YouTube" icon="youtube" />
-        <LinkButton url="#" text="Follow on Facebook" icon="facebook" />
+        <LinkButton 
+          url="https://discord.gg/vru4k95Swa" 
+          text="Join My Discord" 
+          icon="discord" 
+          audioAllowed={audioAllowed}
+        />
+        <LinkButton 
+          url="#" 
+          text="Subscribe on YouTube" 
+          icon="youtube" 
+          audioAllowed={audioAllowed}
+        />
+        <LinkButton 
+          url="#" 
+          text="Follow on Facebook" 
+          icon="facebook" 
+          audioAllowed={audioAllowed}
+        />
       </div>
 
       <section className="events">
