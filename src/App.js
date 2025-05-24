@@ -92,7 +92,7 @@ function App() {
           icon="tiktok" 
         />
         <LinkButton 
-          url="https://discord.gg/vru4k95Swa" 
+          url="https://discord.gg/tuxpwdCEZQ" 
           text="Join My Discord" 
           icon="discord" 
         />
