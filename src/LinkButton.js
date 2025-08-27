@@ -34,7 +34,6 @@ function LinkButton({ url, text, icon, iconSrc, onClick }) {
         document.removeEventListener('click', unlockAudio);
       }).catch(() => {});
     };
-
     document.addEventListener('click', unlockAudio);
   }, []);
 
@@ -60,9 +59,10 @@ function LinkButton({ url, text, icon, iconSrc, onClick }) {
       onClick={handleClick}
       onMouseEnter={handleHover}
       dir={text.startsWith('أ') ? 'rtl' : 'ltr'}
+      style={{ color: icon ? iconColors[icon] ? '#0e0f13' : undefined : undefined }}
     >
       {iconSrc ? (
-        <img src={iconSrc} alt="" className="custom-icon" />
+        <img src={iconSrc} alt="" className="custom-icon" loading="lazy" />
       ) : (
         <i className={`${icons[icon]} icon`} style={{ color: iconColors[icon] }}></i>
       )}

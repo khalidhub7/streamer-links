@@ -12,7 +12,7 @@ function App() {
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 3000);
+    const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -24,7 +24,7 @@ function App() {
   if (loading) {
     return (
       <div className="loading-screen">
-        <div className="loader"></div>
+        <div className="loader" />
         <div className="loading-text">
           <span role="img" aria-label="loading">⏳</span> Loading...
         </div>
@@ -38,15 +38,21 @@ function App() {
   return (
     <div className="container">
       {showVideo && (
-        <div className="video-modal">
+        <div className="video-modal" role="dialog" aria-modal="true">
           <div className="video-modal-content">
-            <button className="close-button" onClick={() => {
-              setShowVideo(false);
-              setSelectedVideo(null);
-            }}>×</button>
-            <video 
-              controls 
-              autoPlay 
+            <button
+              className="close-button"
+              aria-label="Close"
+              onClick={() => {
+                setShowVideo(false);
+                setSelectedVideo(null);
+              }}
+            >
+              ×
+            </button>
+            <video
+              controls
+              autoPlay
               preload="auto"
               key={selectedVideo}
               onEnded={() => {
@@ -67,44 +73,43 @@ function App() {
           <p className="welcome-text">Welcome to my space! 🚀</p>
           <p className="arabic-motto">...شكون انا احبيبي شكون إز فنسموك جوووون سينا ...</p>
         </div>
-        <div className="logo"></div>
+        <div className="logo" aria-hidden="true"></div>
       </header>
 
       <div className="links-container">
-        <LinkButton 
-          url="https://www.instagram.com/vins.moke921?igsh=MXVsc2R2bXAyMmhxeg%3D%3D&utm_source=qr" 
-          text="Follow on Instagram" 
-          icon="instagram" 
+        <LinkButton
+          url="https://www.instagram.com/vins.moke921?igsh=MXVsc2R2bXAyMmhxeg%3D%3D&utm_source=qr"
+          text="Follow on Instagram"
+          icon="instagram"
         />
-        <LinkButton 
-          url="https://kick.com/vinsmoke921" 
-          text="Watch Kick Live Stream" 
-          icon="kick" 
+        <LinkButton
+          url="https://kick.com/vinsmoke921"
+          text="Watch Kick Live Stream"
+          icon="kick"
         />
-        <LinkButton 
-          url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW" 
-          text="Join WhatsApp Group" 
-          icon="whatsapp" 
+        <LinkButton
+          url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW"
+          text="Join WhatsApp Group"
+          icon="whatsapp"
         />
-        <LinkButton 
-          url="https://www.tiktok.com/search?q=vinsmoke&t=1739252858280" 
-          text="Follow on TikTok" 
-          icon="tiktok" 
+        <LinkButton
+          url="https://www.tiktok.com/search?q=vinsmoke&t=1739252858280"
+          text="Follow on TikTok"
+          icon="tiktok"
         />
-        <LinkButton 
-          url="https://discord.gg/tuxpwdCEZQ" 
-          text="Join My Discord" 
-          icon="discord" 
+        <LinkButton
+          url="https://discord.gg/tuxpwdCEZQ"
+          text="Join My Discord"
+          icon="discord"
         />
-        
-        <LinkButton 
-          url="#" 
+        <LinkButton
+          url="#"
           text="أجي نديك لواد"
           iconSrc={riverIcon}
           onClick={() => handleVideoClick('river')}
         />
-        <LinkButton 
-          url="#" 
+        <LinkButton
+          url="#"
           text="أجي تبعني لصحرا"
           iconSrc={desertIcon}
           onClick={() => handleVideoClick('desert')}
