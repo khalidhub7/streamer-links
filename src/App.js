@@ -77,7 +77,7 @@ function App() {
           icon="instagram" 
         />
         <LinkButton 
-          url="https://kick.com/vinsmoke-ff" 
+          url="https://kick.com/vinsmoke921" 
           text="Watch Kick Live Stream" 
           icon="kick" 
         />
