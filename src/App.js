@@ -1,25 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import './App.css';
-import LinkButton from './LinkButton';
-import riverVideo from './img/river.mp4';
-import desertVideo from './img/desert.mp4';
-import riverIcon from './img/river-icon.png';
-import desertIcon from './img/desert-icon.png';
+
+const LinkButton = lazy(() => import('./LinkButton'));
+
+const ButtonFallback = () => (
+  <div className="link-button-fallback">
+    <div className="button-loader"></div>
+  </div>
+);
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [showVideo, setShowVideo] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2000);
-    return () => clearTimeout(timer);
+    const timer = setTimeout(() => setLoading(false), 1000);
+    const checkIfMobile = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', checkIfMobile);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkIfMobile);
+    };
   }, []);
-
-  const handleVideoClick = (video) => {
-    setSelectedVideo(video);
-    setShowVideo(true);
-  };
 
   if (loading) {
     return (
@@ -37,88 +39,34 @@ function App() {
 
   return (
     <div className="container">
-      {showVideo && (
-        <div className="video-modal" role="dialog" aria-modal="true">
-          <div className="video-modal-content">
-            <button
-              className="close-button"
-              aria-label="Close"
-              onClick={() => {
-                setShowVideo(false);
-                setSelectedVideo(null);
-              }}
-            >
-              ×
-            </button>
-            <video
-              controls
-              autoPlay
-              preload="auto"
-              key={selectedVideo}
-              onEnded={() => {
-                setShowVideo(false);
-                setSelectedVideo(null);
-              }}
-            >
-              <source src={selectedVideo === 'river' ? riverVideo : desertVideo} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      )}
-
       <header className="header">
-        <div className="header-content">
-          <h1 className="main-title">Vinsmoke</h1>
+        <h1 className="main-title">
+          <span className="arched-text">Vinsmoke</span>
+        </h1>
+
+        <div className="logo" aria-hidden="true"></div>
+
+        <div className="sub-texts">
           <p className="welcome-text">Welcome to my space! 🚀</p>
           <p className="arabic-motto">...شكون انا احبيبي شكون إز فنسموك جوووون سينا ...</p>
         </div>
-        <div className="logo" aria-hidden="true"></div>
       </header>
 
       <div className="links-container">
-        <LinkButton
-          url="https://www.instagram.com/vins.moke921?igsh=MXVsc2R2bXAyMmhxeg%3D%3D&utm_source=qr"
-          text="Follow on Instagram"
-          icon="instagram"
-        />
-        <LinkButton
-          url="https://kick.com/vinsmoke921"
-          text="Watch Kick Live Stream"
-          icon="kick"
-        />
-        <LinkButton
-          url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW"
-          text="Join WhatsApp Group"
-          icon="whatsapp"
-        />
-        <LinkButton
-          url="https://www.tiktok.com/search?q=vinsmoke&t=1739252858280"
-          text="Follow on TikTok"
-          icon="tiktok"
-        />
-        <LinkButton
-          url="https://discord.gg/tuxpwdCEZQ"
-          text="Join My Discord"
-          icon="discord"
-        />
-        <LinkButton
-          url="#"
-          text="أجي نديك لواد"
-          iconSrc={riverIcon}
-          onClick={() => handleVideoClick('river')}
-        />
-        <LinkButton
-          url="#"
-          text="أجي تبعني لصحرا"
-          iconSrc={desertIcon}
-          onClick={() => handleVideoClick('desert')}
-        />
+        <Suspense fallback={<ButtonFallback />}>
+          <LinkButton url="https://www.instagram.com/vins.moke921?igsh=MXVsc2R2bXAyMmhxeg%3D%3D&utm_source=qr" text="Follow on Instagram" icon="instagram" isMobile={isMobile} />
+          <LinkButton url="https://kick.com/vinsmoke921" text="Watch Kick Live Stream" icon="kick" isMobile={isMobile} />
+          <LinkButton url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW" text="Join WhatsApp Group" icon="whatsapp" isMobile={isMobile} />
+          <LinkButton url="https://www.tiktok.com/search?q=vinsmoke&t=1739252858280" text="Follow on TikTok" icon="tiktok" isMobile={isMobile} />
+          <LinkButton url="https://discord.gg/tuxpwdCEZQ" text="Join My Discord" icon="discord" isMobile={isMobile} />
+        </Suspense>
       </div>
 
       <section className="events">
         <h2>Upcoming Events</h2>
-        <p>لا توجد أحداث قادمة في الوقت الحالي. يرجى التحقق لاحقاً!</p>
+        <ul>
+          <li>لايف في kick مع 11:15</li>
+        </ul>
       </section>
 
       <footer className="footer">
@@ -131,4 +79,4 @@ function App() {
   );
 }
 
-export default App;
+export default React.memo(App);

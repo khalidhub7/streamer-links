@@ -1,134 +1,207 @@
+/* ===== Vivid App-Style Link Button with Red Border Hover ===== */
 .link-button {
-  --gold-1: #ffb347;
-  --gold-2: #ffcc33;
-  --glass: rgba(255, 255, 255, 0.1);
-  --stroke: rgba(255, 255, 255, 0.15);
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
 
   width: 100%;
-  max-width: 360px;
-  margin: 10px auto;
+  max-width: 280px;
+  margin: 12px auto;
 
-  padding: clamp(14px, 2vh, 18px) clamp(18px, 2.4vw, 24px);
-  font-size: clamp(1rem, 1.15vw, 1.1rem);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  color: #1a1a1a;
-  background: linear-gradient(145deg, var(--gold-1), var(--gold-2));
-  border: 2px solid rgba(255, 204, 51, 0.35);
-  border-radius: 16px;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: none;
   text-decoration: none;
 
-  box-shadow: 0 6px 22px rgba(255, 174, 0, 0.3),
-              inset 0 0 6px rgba(255, 255, 255, 0.1);
+  /* Glass background with stronger contrast */
+  background: rgba(20, 30, 50, 0.45);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
 
-  backdrop-filter: blur(10px) saturate(130%);
-  -webkit-backdrop-filter: blur(10px) saturate(130%);
+  /* Neon subtle glow */
+  box-shadow: 0 0 15px rgba(255,255,255,0.05),
+              0 6px 18px rgba(0,0,0,0.3),
+              0 0 12px rgba(0,255,200,0.12);
 
-  transition: transform 200ms ease, box-shadow 200ms ease, border-color 300ms ease, background 250ms ease, color 200ms ease;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.35s ease-in-out;
 
-  animation: buttonFloat 5s ease-in-out infinite;
+  animation: floatBtn 6s ease-in-out infinite;
+  border: 1px solid orange;
 }
 
-/* Smooth fading border animation */
+.link-button-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 360px;
+  margin: 12px auto;
+  padding: 14px 24px;
+  background: rgba(20, 30, 50, 0.2);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 56px;
+}
+
+.button-loader {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255,255,255,0.1);
+  border-top: 2px solid #7289da;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Neon gradient glow overlay */
 .link-button::before {
   content: '';
   position: absolute;
-  inset: -3px;
+  inset: 0;
   border-radius: 16px;
-  border: 2px solid transparent;
-  background: linear-gradient(90deg, #ffcc33, #ffb347, #ffd93d, #ffcc33);
-  background-size: 300% 300%;
+  background: linear-gradient(120deg, #00f0ff, #ff00f0, #ff8c00);
+  opacity: 0.12;
+  filter: blur(18px);
   z-index: -1;
-  animation: borderFade 4s linear infinite;
+  transition: opacity 0.4s ease;
 }
 
-@keyframes borderFade {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.link-button:hover::before {
+  opacity: 0.25;
 }
 
-/* Shiny hover effect */
+/* Red bottom border effect */
 .link-button::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.25) 40%,
-    rgba(255, 255, 255, 0.35) 50%,
-    rgba(255, 255, 255, 0.25) 60%,
-    transparent 100%
-  );
-  transform: translateX(-120%);
-  transition: transform 550ms ease;
-  pointer-events: none;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: #ff2b2b; /* red accent */
+  border-radius: 2px 2px 0 0;
+  transition: width 0.35s ease-in-out;
 }
 
+.link-button:hover::after {
+  width: 100%;
+}
+
+/* Hover & Focus */
 .link-button:hover,
 .link-button:focus-visible {
-  color: #fff;
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 10px 28px rgba(255, 160, 0, 0.35),
-              0 0 18px rgba(255, 204, 51, 0.5),
-              inset 0 0 8px rgba(255, 255, 255, 0.1);
-}
-.link-button:hover::after,
-.link-button:focus-visible::after {
-  transform: translateX(0%);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 28px rgba(0,255,200,0.3),
+              0 12px 30px rgba(0,0,0,0.35),
+              0 0 18px rgba(255,0,255,0.25);
 }
 
-/* Bigger, lighter icons */
-.link-button i,
-.custom-icon {
-  margin-right: 14px;
-  font-size: 1.6rem;
-  color: rgba(255, 255, 255, 0.85);
-  flex: 0 0 auto;
-  filter: drop-shadow(0 0 5px rgba(255, 204, 51, 0.6));
-}
-.custom-icon { width: 28px; height: 28px; }
-
-.link-button[dir="rtl"] i,
-.link-button[dir="rtl"] .custom-icon {
-  margin-right: 0;
-  margin-left: 14px;
+/* Active press effect */
+.link-button:active {
+  transform: scale(0.97) translateY(1px);
+  box-shadow: 0 0 18px rgba(0,255,200,0.25),
+              0 6px 15px rgba(0,0,0,0.25);
 }
 
-/* Subtle breathing animation */
-@keyframes buttonFloat {
-  0%, 100% { transform: translateY(0) }
-  50%      { transform: translateY(-3px) }
+/* Icon styling */
+.link-button img.custom-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Responsive tweaks */
+.link-button:hover img.custom-icon {
+  transform: scale(1.18);
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
+}
+
+/* Text */
+.link-button span {
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 0 6px rgba(255,255,255,0.25);
+  transition: transform 0.3s ease;
+}
+
+.link-button:hover span {
+  transform: translateY(-1px);
+}
+
+/* RTL support */
+.link-button[dir="rtl"] {
+  flex-direction: row-reverse;
+}
+
+/* Floating animation */
+@keyframes floatBtn {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
   .link-button {
-    max-width: none;
-    font-size: 1rem;
-    padding: 14px 18px;
-  }
-}
-@media (max-width: 480px) {
-  .link-button {
     font-size: 0.95rem;
-    padding: 12px 14px;
+    padding: 12px 20px;
+    gap: 10px;
+    animation-duration: 8s; /* Slower animation on mobile */
   }
-  .custom-icon { width: 24px; height: 24px; font-size: 1.4rem; }
+  .link-button img.custom-icon {
+    width: 22px;
+    height: 22px;
+  }
+  
+  /* Reduce effects on mobile for better performance */
+  .link-button::before {
+    filter: blur(12px);
+  }
 }
 
-/* Reduce motion */
+@media (max-width: 480px) {
+  .link-button {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+    gap: 8px;
+    animation: none; /* Remove animation on very small devices */
+  }
+  .link-button img.custom-icon {
+    width: 20px;
+    height: 20px;
+  }
+  .link-button span {
+    font-size: 0.88rem;
+  }
+  
+  /* Further reduce effects */
+  .link-button::before {
+    display: none;
+  }
+}
+
+/* Accessibility focus outline */
+.link-button:focus-visible {
+  outline: 2px solid #00f0ff;
+  outline-offset: 3px;
+}
+
+/* Reduce Motion */
 @media (prefers-reduced-motion: reduce) {
-  .link-button { animation: none !important; }
-  .link-button::after { display: none; }
-  .link-button::before { display: none; }
+  .link-button,
+  .link-button img.custom-icon,
+  .link-button span,
+  .link-button::before,
+  .link-button::after {
+    transition: none !important;
+    animation: none !important;
+  }
 }

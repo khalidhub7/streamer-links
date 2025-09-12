@@ -1,54 +1,58 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './LinkButton.css';
-import hoverSound from './img/hover-sound.wav';
+
+// Import optimized icons (resized to appropriate dimensions)
+import instagramIcon from './img/icons/instagram-optimized.png';
+import kickIcon from './img/icons/kick-optimized.png';
+import whatsappIcon from './img/icons/whatsapp-optimized.png';
+import tiktokIcon from './img/icons/tik-tok-optimized.png';
+import discordIcon from './img/icons/discord-optimized.png';
 
 const icons = {
-  discord: 'fab fa-discord',
-  instagram: 'fab fa-instagram',
-  whatsapp: 'fab fa-whatsapp',
-  tiktok: 'fab fa-tiktok',
-  kick: 'fas fa-play'
+  instagram: instagramIcon,
+  kick: kickIcon,
+  whatsapp: whatsappIcon,
+  tiktok: tiktokIcon,
+  discord: discordIcon
 };
 
-const iconColors = {
-  discord: '#7289da',
-  instagram: '#E4405F',
-  whatsapp: '#25D366',
-  tiktok: '#69C9D0',
-  kick: '#00FF00'
-};
+// Simple image cache
+const imageCache = {};
 
-function LinkButton({ url, text, icon, iconSrc, onClick }) {
-  const audioRef = useRef(null);
-  const [audioReady, setAudioReady] = useState(false);
+function LinkButton({ url, text, icon, isMobile }) {
+  const [iconSrc, setIconSrc] = useState(null);
 
   useEffect(() => {
-    const audio = new Audio(hoverSound);
-    audioRef.current = audio;
-
-    const unlockAudio = () => {
-      audio.play().then(() => {
-        audio.pause();
-        audio.currentTime = 0;
-        setAudioReady(true);
-        document.removeEventListener('click', unlockAudio);
-      }).catch(() => {});
+    let isMounted = true;
+    
+    if (icon && icons[icon]) {
+      // If already cached, use it
+      if (imageCache[icon]) {
+        setIconSrc(imageCache[icon]);
+        return;
+      }
+      
+      // Preload the image
+      const img = new Image();
+      img.onload = () => {
+        if (isMounted) {
+          imageCache[icon] = icons[icon];
+          setIconSrc(icons[icon]);
+        }
+      };
+      img.onerror = () => {
+        console.warn(`Failed to load icon: ${icon}`);
+        if (isMounted) {
+          setIconSrc(null);
+        }
+      };
+      img.src = icons[icon];
+    }
+    
+    return () => {
+      isMounted = false;
     };
-    document.addEventListener('click', unlockAudio);
-  }, []);
-
-  const handleClick = (e) => {
-    if (url === '#') {
-      e.preventDefault();
-      if (onClick) onClick();
-    }
-  };
-
-  const handleHover = () => {
-    if (audioReady) {
-      audioRef.current?.play().catch(() => {});
-    }
-  };
+  }, [icon]);
 
   return (
     <a
@@ -56,19 +60,26 @@ function LinkButton({ url, text, icon, iconSrc, onClick }) {
       target="_blank"
       rel="noopener noreferrer"
       className="link-button"
-      onClick={handleClick}
-      onMouseEnter={handleHover}
-      dir={text.startsWith('أ') ? 'rtl' : 'ltr'}
-      style={{ color: icon ? iconColors[icon] ? '#0e0f13' : undefined : undefined }}
+      aria-label={text}
+      // Reduce animation intensity on mobile
+      style={isMobile ? { '--animation-intensity': '0.5' } : {}}
     >
-      {iconSrc ? (
-        <img src={iconSrc} alt="" className="custom-icon" loading="lazy" />
-      ) : (
-        <i className={`${icons[icon]} icon`} style={{ color: iconColors[icon] }}></i>
+      {iconSrc && (
+        <img
+          src={iconSrc}
+          alt=""
+          className="custom-icon"
+          loading="lazy"
+          width="26"
+          height="26"
+          onError={(e) => {
+            e.target.style.display = 'none';
+          }}
+        />
       )}
-      <span className="link-text">{text}</span>
+      <span>{text}</span>
     </a>
   );
 }
 
-export default LinkButton;
+export default React.memo(LinkButton);

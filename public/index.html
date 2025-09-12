@@ -8,16 +8,89 @@
   />
   <meta name="theme-color" content="#111111" />
   <title>Vinsmoke Links</title>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  />
+  <meta name="description" content="Vinsmoke's social links and online presence" />
+
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@400;500;600;700&display=swap"
     rel="stylesheet"
+    media="print" onload="this.media='all'"
   />
+  <noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </noscript>
+  
+  <!-- Fixed Font Awesome with correct integrity -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+    media="print" onload="this.media='all'"
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </noscript>
+
+  <!-- Inline critical CSS -->
+  <style>
+    /* Critical CSS extracted from App.css */
+    .loading-screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: rgba(14,15,19,0.92);
+    }
+    .loader {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,0.12);
+      border-top-color: #7289da;
+      border-right-color: #e4405f;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg) } }
+    .loading-text {
+      font-size: 1rem;
+      color: rgba(233, 238, 247, 0.85);
+      animation: fadeInText 1s ease forwards;
+    }
+    @keyframes fadeInText { to { opacity: 1 } }
+    .progress-bar {
+      width: min(220px, 70vw);
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%; width: 0;
+      background: linear-gradient(135deg, #7289da, #e4405f);
+      animation: progress 1.6s ease-out forwards;
+    }
+    @keyframes progress { to { width: 100%; } }
+  </style>
 </head>
 <body style="padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);">
   <div id="root"></div>
+  
+  <!-- Preload key images with correct as attribute -->
+  <link rel="preload" as="image" href="img/wallpaperflare.com_wallpaper.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" href="img/logoo.jpeg" fetchpriority="high" />
 </body>
 </html>
