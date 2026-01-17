@@ -24,9 +24,10 @@
   -webkit-backdrop-filter: blur(14px) saturate(120%);
 
   /* Neon subtle glow */
-  box-shadow: 0 0 15px rgba(255,255,255,0.05),
-              0 6px 18px rgba(0,0,0,0.3),
-              0 0 12px rgba(0,255,200,0.12);
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.05),
+    0 6px 18px rgba(0, 0, 0, 0.3),
+    0 0 12px rgba(0, 255, 200, 0.12);
 
   position: relative;
   overflow: hidden;
@@ -54,7 +55,7 @@
 .button-loader {
   width: 24px;
   height: 24px;
-  border: 2px solid rgba(255,255,255,0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-top: 2px solid #7289da;
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -62,7 +63,7 @@
 
 /* Neon gradient glow overlay */
 .link-button::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   border-radius: 16px;
@@ -79,7 +80,7 @@
 
 /* Red bottom border effect */
 .link-button::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -98,16 +99,18 @@
 .link-button:hover,
 .link-button:focus-visible {
   transform: translateY(-4px) scale(1.05);
-  box-shadow: 0 0 28px rgba(0,255,200,0.3),
-              0 12px 30px rgba(0,0,0,0.35),
-              0 0 18px rgba(255,0,255,0.25);
+  box-shadow:
+    0 0 28px rgba(0, 255, 200, 0.3),
+    0 12px 30px rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(255, 0, 255, 0.25);
 }
 
 /* Active press effect */
 .link-button:active {
   transform: scale(0.97) translateY(1px);
-  box-shadow: 0 0 18px rgba(0,255,200,0.25),
-              0 6px 15px rgba(0,0,0,0.25);
+  box-shadow:
+    0 0 18px rgba(0, 255, 200, 0.25),
+    0 6px 15px rgba(0, 0, 0, 0.25);
 }
 
 /* Icon styling */
@@ -116,12 +119,14 @@
   height: 26px;
   object-fit: contain;
   transform: rotate(0deg);
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
 .link-button:hover img.custom-icon {
   transform: scale(1.18);
-  filter: drop-shadow(0 0 8px rgba(255,255,255,0.8));
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
 }
 
 /* Text */
@@ -129,7 +134,7 @@
   font-size: 1rem;
   font-weight: 600;
   white-space: nowrap;
-  text-shadow: 0 0 6px rgba(255,255,255,0.25);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
   transition: transform 0.3s ease;
 }
 
@@ -144,8 +149,13 @@
 
 /* Floating animation */
 @keyframes floatBtn {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-3px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
 }
 
 /* Responsive adjustments */
@@ -160,7 +170,7 @@
     width: 22px;
     height: 22px;
   }
-  
+
   /* Reduce effects on mobile for better performance */
   .link-button::before {
     filter: blur(12px);
@@ -181,7 +191,7 @@
   .link-button span {
     font-size: 0.88rem;
   }
-  
+
   /* Further reduce effects */
   .link-button::before {
     display: none;

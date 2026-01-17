@@ -2,7 +2,7 @@
 :root {
   --bg-color: #0a0b0f;
   --glass-bg: rgba(30, 35, 55, 0.9);
-  --glass-shadow: 0 4px 18px rgba(0,0,0,0.45);
+  --glass-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
 
   --text-color: #fdfdfd;
   --muted-text: rgba(240, 240, 245, 0.85);
@@ -11,23 +11,36 @@
   --accent-2: #ef4565;
   --accent-3: #f7b32b;
 
-  --glow-1: rgba(61,169,252,0.6);
-  --glow-2: rgba(239,69,101,0.55);
+  --glow-1: rgba(61, 169, 252, 0.6);
+  --glow-2: rgba(239, 69, 101, 0.55);
 }
 
 /* ===== Page ===== */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--text-color);
   line-height: 1.65;
   background:
-    radial-gradient(1200px 800px at 20% -10%, rgba(114,137,218,0.15), transparent 55%),
-    radial-gradient(1000px 600px at 120% 40%, rgba(228,64,95,0.12), transparent 55%),
-    url('./img/wallpaperflare.com_wallpaper.jpg') center/cover fixed no-repeat,
+    radial-gradient(
+      1200px 800px at 20% -10%,
+      rgba(114, 137, 218, 0.15),
+      transparent 55%
+    ),
+    radial-gradient(
+      1000px 600px at 120% 40%,
+      rgba(228, 64, 95, 0.12),
+      transparent 55%
+    ),
+    url("../assets/images/wallpaper.jpg") center/cover fixed no-repeat,
     var(--bg-color);
 }
 
@@ -52,8 +65,12 @@ body {
   align-items: start;
   padding: 14px 20px;
   border-radius: 18px;
-  background: linear-gradient(135deg, rgba(114,137,218,0.45), rgba(228,64,95,0.33));
-  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  background: linear-gradient(
+    135deg,
+    rgba(114, 137, 218, 0.45),
+    rgba(228, 64, 95, 0.33)
+  );
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 /* Title */
@@ -61,7 +78,7 @@ body {
   grid-area: title;
   margin: 0;
   font-size: clamp(2.6rem, 4vw, 3.6rem);
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-weight: 700;
   text-align: center;
   color: #fff;
@@ -73,7 +90,8 @@ body {
   background-size: 200% 200%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 14px rgba(255, 111, 0, 0.6)) drop-shadow(0 0 22px rgba(255, 180, 71, 0.5));
+  filter: drop-shadow(0 0 14px rgba(255, 111, 0, 0.6))
+    drop-shadow(0 0 22px rgba(255, 180, 71, 0.5));
   animation: shimmer 6s ease-in-out infinite;
 }
 
@@ -95,7 +113,7 @@ body {
   font-weight: 600;
   color: var(--accent-1);
   font-style: italic;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
 }
 
 .arabic-motto {
@@ -113,10 +131,14 @@ body {
   justify-self: end;
   width: clamp(140px, 20vw, 200px);
   height: clamp(130px, 18vw, 180px);
-  background: url("./img/logoo.jpeg") center/cover no-repeat;
+  background: url("../assets/logos/logo-01.jpeg") center/cover no-repeat;
   border-radius: 73% 27% 70% 30% / 30% 61% 39% 70%;
-  box-shadow: 0 0 25px var(--glow-1), 0 0 45px var(--glow-2);
-  animation: float 6s ease-in-out infinite, pulse 4s ease-in-out infinite;
+  box-shadow:
+    0 0 25px var(--glow-1),
+    0 0 45px var(--glow-2);
+  animation:
+    float 6s ease-in-out infinite,
+    pulse 4s ease-in-out infinite;
 }
 
 /* ===== Links Grid ===== */
@@ -133,7 +155,7 @@ body {
   margin-top: 18px;
   padding: 20px;
   border-radius: 12px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .events h2 {
@@ -143,8 +165,8 @@ body {
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
-  border-bottom: 2px solid rgba(255,255,255,0.2);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   display: inline-block;
   padding-bottom: 4px;
 }
@@ -175,25 +197,41 @@ body {
 
 /* ===== Animations ===== */
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
-    box-shadow: 0 0 25px var(--glow-1), 0 0 45px var(--glow-2);
+    box-shadow:
+      0 0 25px var(--glow-1),
+      0 0 45px var(--glow-2);
   }
   50% {
     transform: scale(1.05);
-    box-shadow: 0 0 35px var(--glow-1), 0 0 55px var(--glow-2);
+    box-shadow:
+      0 0 35px var(--glow-1),
+      0 0 55px var(--glow-2);
   }
 }
 
 @keyframes shimmer {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ===== Mobile Adjustments ===== */
@@ -223,6 +261,10 @@ body {
     text-align: center;
   }
 
-  .welcome-text { font-size: 1rem; }
-  .arabic-motto { font-size: 0.9rem; }
+  .welcome-text {
+    font-size: 1rem;
+  }
+  .arabic-motto {
+    font-size: 0.9rem;
+  }
 }

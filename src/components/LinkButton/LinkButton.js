@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import './LinkButton.css';
+import React, { useState, useEffect } from "react";
+import "./LinkButton.css";
 
 // Import optimized icons (resized to appropriate dimensions)
-import instagramIcon from './img/icons/instagram-optimized.png';
-import kickIcon from './img/icons/kick-optimized.png';
-import whatsappIcon from './img/icons/whatsapp-optimized.png';
-import tiktokIcon from './img/icons/tik-tok-optimized.png';
-import discordIcon from './img/icons/discord-optimized.png';
+import instagramIcon from "../../assets/icons/discord.png";
+import kickIcon from "../../assets/icons/kick.png";
+import whatsappIcon from "../../assets/icons/whatsapp.png";
+import tiktokIcon from "../../assets/icons/tik-tok.png";
+import discordIcon from "../../assets/icons/discord.png";
 
 const icons = {
   instagram: instagramIcon,
   kick: kickIcon,
   whatsapp: whatsappIcon,
   tiktok: tiktokIcon,
-  discord: discordIcon
+  discord: discordIcon,
 };
 
 // Simple image cache
@@ -24,14 +24,14 @@ function LinkButton({ url, text, icon, isMobile }) {
 
   useEffect(() => {
     let isMounted = true;
-    
+
     if (icon && icons[icon]) {
       // If already cached, use it
       if (imageCache[icon]) {
         setIconSrc(imageCache[icon]);
         return;
       }
-      
+
       // Preload the image
       const img = new Image();
       img.onload = () => {
@@ -48,7 +48,7 @@ function LinkButton({ url, text, icon, isMobile }) {
       };
       img.src = icons[icon];
     }
-    
+
     return () => {
       isMounted = false;
     };
@@ -62,7 +62,7 @@ function LinkButton({ url, text, icon, isMobile }) {
       className="link-button"
       aria-label={text}
       // Reduce animation intensity on mobile
-      style={isMobile ? { '--animation-intensity': '0.5' } : {}}
+      style={isMobile ? { "--animation-intensity": "0.5" } : {}}
     >
       {iconSrc && (
         <img
@@ -73,7 +73,7 @@ function LinkButton({ url, text, icon, isMobile }) {
           width="26"
           height="26"
           onError={(e) => {
-            e.target.style.display = 'none';
+            e.target.style.display = "none";
           }}
         />
       )}

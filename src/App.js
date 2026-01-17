@@ -1,7 +1,7 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
-import './App.css';
+import React, { useState, useEffect, lazy, Suspense } from "react";
+import "./styles/App.css";
 
-const LinkButton = lazy(() => import('./LinkButton'));
+const LinkButton = lazy(() => import("./components/LinkButton/LinkButton"));
 
 const ButtonFallback = () => (
   <div className="link-button-fallback">
@@ -9,17 +9,20 @@ const ButtonFallback = () => (
   </div>
 );
 
-function App() {
+const App = () => {
   const [loading, setLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000);
+    const timer = setTimeout(() => setLoading(false), 300);
+
     const checkIfMobile = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener('resize', checkIfMobile);
+
+    window.addEventListener("resize", checkIfMobile);
+
     return () => {
       clearTimeout(timer);
-      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener("resize", checkIfMobile);
     };
   }, []);
 
@@ -28,7 +31,10 @@ function App() {
       <div className="loading-screen">
         <div className="loader" />
         <div className="loading-text">
-          <span role="img" aria-label="loading">⏳</span> Loading...
+          <span role="img" aria-label="loading">
+            ⏳
+          </span>
+          loading...
         </div>
         <div className="progress-bar">
           <div className="progress-bar-fill"></div>
@@ -48,35 +54,64 @@ function App() {
 
         <div className="sub-texts">
           <p className="welcome-text">Welcome to my space! 🚀</p>
-          <p className="arabic-motto">...شكون انا احبيبي شكون إز فنسموك جوووون سينا ...</p>
+          <p className="arabic-motto">
+            ...شكون انا احبيبي شكون إز فنسموك جوووون سينا ...
+          </p>
         </div>
       </header>
 
       <div className="links-container">
         <Suspense fallback={<ButtonFallback />}>
-          <LinkButton url="https://www.instagram.com/vins.moke921?igsh=MXVsc2R2bXAyMmhxeg%3D%3D&utm_source=qr" text="Follow on Instagram" icon="instagram" isMobile={isMobile} />
-          <LinkButton url="https://kick.com/vinsmoke921" text="Watch Kick Live Stream" icon="kick" isMobile={isMobile} />
-          <LinkButton url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW" text="Join WhatsApp Group" icon="whatsapp" isMobile={isMobile} />
-          <LinkButton url="https://www.tiktok.com/search?q=vinsmoke&t=1739252858280" text="Follow on TikTok" icon="tiktok" isMobile={isMobile} />
-          <LinkButton url="https://discord.gg/tuxpwdCEZQ" text="Join My Discord" icon="discord" isMobile={isMobile} />
+          <LinkButton
+            url="https://www.instagram.com/vins.moke921?igsh=MXVsc2R2bXAyMmhxeg%3D%3D&utm_source=qr"
+            text="Follow on Instagram"
+            icon="instagram"
+            isMobile={isMobile}
+          />
+          <LinkButton
+            url="https://kick.com/vinsmoke921"
+            text="Watch Kick Live Stream"
+            icon="kick"
+            isMobile={isMobile}
+          />
+          <LinkButton
+            url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW"
+            text="Join WhatsApp Group"
+            icon="whatsapp"
+            isMobile={isMobile}
+          />
+          <LinkButton
+            url="https://www.tiktok.com/search?q=vinsmoke&t=1739252858280"
+            text="Follow on TikTok"
+            icon="tiktok"
+            isMobile={isMobile}
+          />
+          <LinkButton
+            url="https://discord.gg/tuxpwdCEZQ"
+            text="Join My Discord"
+            icon="discord"
+            isMobile={isMobile}
+          />
         </Suspense>
       </div>
 
       <section className="events">
-        <h2>Upcoming Events</h2>
+        <h2>upcoming events</h2>
         <ul>
-          <li>لايف في kick مع 11:15</li>
+          <li></li>
         </ul>
       </section>
 
       <footer className="footer">
         <div className="footer-right">
-          <p><strong>Vinsmoke 2025 🌟</strong></p>
+          <p>
+            <strong>vinsmoke 2026 🌟</strong>
+          </p>
           <p>Please enable JavaScript for the best experience.</p>
         </div>
       </footer>
     </div>
   );
-}
+};
 
 export default React.memo(App);
