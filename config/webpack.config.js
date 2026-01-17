@@ -46,12 +46,12 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: "../public/index.html",
+      template: path.resolve(__dirname, "../public/index.html"),
     }),
   ],
 
   devServer: {
-    static: path.resolve(__dirname, "../public"),
+    static: path.resolve(__dirname, "../build"),
     port: 3000,
     open: true,
   },
