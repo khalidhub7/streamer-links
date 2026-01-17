@@ -75,7 +75,7 @@ const App = () => {
             isMobile={isMobile}
           />
           <LinkButton
-            url="https://chat.whatsapp.com/I0x3eaXFeFg9J2V1UNDrAW"
+            url="https://chat.whatsapp.com/J3YwdIJuoXq5La4TRGhdDq"
             text="Join WhatsApp Group"
             icon="whatsapp"
             isMobile={isMobile}
@@ -87,7 +87,7 @@ const App = () => {
             isMobile={isMobile}
           />
           <LinkButton
-            url="https://discord.gg/tuxpwdCEZQ"
+            url="https://discord.gg/yvQ8NqQEsW"
             text="Join My Discord"
             icon="discord"
             isMobile={isMobile}
