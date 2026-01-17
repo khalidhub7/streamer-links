@@ -27,7 +27,18 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/i,
-        type: "asset/resource", // need optimizer
+        type: "asset/resource",
+        use: [
+          {
+            loader: "image-webpack-loader",
+            options: {
+              mozjpeg: { progressive: true },
+              optipng: { enabled: true },
+              pngquant: { quality: [0.6, 0.8] },
+              gifsicle: { interlaced: true },
+            },
+          },
+        ],
       },
     ],
   },
